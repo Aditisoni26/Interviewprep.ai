@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Header section */
+
+.header h3 {
+    font-size: x-large;
+    margin: 1% 3%;
+    font-weight:bold;
+}
+
+.header img {
+    margin:1%;
+    margin-right:auto;
+}
+
+/* Footer section */
+.footer{
+padding:2%;
+padding-left:10%;
+
+}
+
+/* main content */
+.main-content{
+  
+}
