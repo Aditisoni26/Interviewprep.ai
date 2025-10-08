@@ -13,7 +13,7 @@ function App() {
       <Header />
       <div className="main-content flex-grow p-8">
         <Routes>
-          dfsdkfsjfjfsfdfhfkjshfkjh
+          dfsdkfsjfjfsfdfhfkjshfkjhf
            <Route path="/" element={<Home />} /> 
            <Route path="/login" element={<Login/>}/>
            <Route path="/registration" element={<Register/>}/>
