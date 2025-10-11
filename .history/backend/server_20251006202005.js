@@ -5,8 +5,6 @@ import dotenv from "dotenv";
 
 
 import authRoutes from "./routes/authRoutes.js";
-import resumeRoutes from "./routes/resumeRoutes.js";
-
 
 dotenv.config();
 const app = express();
@@ -21,7 +19,6 @@ mongoose
     .catch((err) => console.log(err));
 
 app.use("/api/auth", authRoutes);
-app.use("/api/resume", resumeRoutes);
 app.get("/", (req, res) => {
     res.send("Backend API is running!");
 });

@@ -1,34 +1,30 @@
 import React, {useState} from 'react'
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-    const navigate = useNavigate();
-    const location = useLocation();
+
+   
+const navigate = useNavigate();
   const [form, setForm] = useState({email: "", password: "" });
 
 const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const res = await fetch("http://localhost:5000/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+  const res = await fetch("http://localhost:5000/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(form),
+  });
 
-    const data = await res.json();
+  const data = await res.json();
 
-    if (res.ok) {
-      localStorage.setItem("token", data.token);
-
-      // Get redirect query from URL if exists
-      const params = new URLSearchParams(location.search);
-      const redirect = params.get("redirect") || "/"; // default to home
-
-      navigate(redirect); // navigate to intended page
-    } else {
-      alert(data.message || "Login failed");
-    }
-  };
+  if (res.ok) {
+    alert("Login successful!");
+    navigate("/"); // redirect to home/dashboard
+  } else {
+    alert(data.message || "Login failed");
+  }
+};
 
   return (
     <div>

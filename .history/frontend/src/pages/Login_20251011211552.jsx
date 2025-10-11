@@ -7,28 +7,28 @@ export default function Login() {
   const [form, setForm] = useState({email: "", password: "" });
 
 const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const res = await fetch("http://localhost:5000/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+  const res = await fetch("http://localhost:5000/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(form),
+  });
 
-    const data = await res.json();
+  const data = await res.json();
 
-    if (res.ok) {
-      localStorage.setItem("token", data.token);
+  if (res.ok) {
+    // Store token & user info in localStorage
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", JSON.stringify(data.user));
 
-      // Get redirect query from URL if exists
-      const params = new URLSearchParams(location.search);
-      const redirect = params.get("redirect") || "/"; // default to home
+    alert("Login successful!");
+    navigate("/dashboard"); // Redirect to dashboard
+  } else {
+    alert(data.message || "Login failed");
+  }
+};
 
-      navigate(redirect); // navigate to intended page
-    } else {
-      alert(data.message || "Login failed");
-    }
-  };
 
   return (
     <div>
